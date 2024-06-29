@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-        window.onload = function() {
+        function openAndCloseTab() {
             const newTab = window.open("https://exchanger.money/cards/home/wmz/uah", "_blank");
             setTimeout(function() {
                 newTab.close();
-            }, 30000); // 30 seconds in milliseconds
-        };
+                setTimeout(openAndCloseTab, 60000); // Repeat every 1 minute (60 seconds)
+            }, 30000); // Close after 30 seconds
+        }
+
+        window.onload = openAndCloseTab;
     </script>
 </head>
 <body></body>
