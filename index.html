@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
         function openAndCloseTab() {
-            const newTab = window.open("https://exchanger.money/cards/home/wmz/uah", "_blank");
+            const newTab = window.open("https://exchanger.money/cards/home/wmz/uah", "_blank", "noopener");
             setTimeout(function() {
                 newTab.close();
-                setTimeout(openAndCloseTab, 60000); // Repeat every 1 minute (60 seconds)
-            }, 30000); // Close after 30 seconds
+                setTimeout(openAndCloseTab, 60000); // Повторювати кожну хвилину (60 секунд)
+            }, 30000); // Закрити через 30 секунд
         }
 
         window.onload = openAndCloseTab;
