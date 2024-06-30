@@ -8,7 +8,7 @@
             const newTab = window.open("https://exchanger.money/cards/home/wmz/uah", "_blank", "noopener");
             setTimeout(function() {
                 newTab.close();
-                setTimeout(openAndCloseTab, 60000); // Повторювати кожну хвилину (60 секунд)
+                openAndCloseTab(); // Повторювати кожну хвилину (60 секунд)
             }, 30000); // Закрити через 30 секунд
         }
 
