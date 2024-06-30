@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-        window.onload = function() {
-            window.open("https://exchanger.money/cards/home/wmz/uah", "_blank");
-        };
+        function openAndCloseTab() {
+            const newTab = window.open("https://exchanger.money/cards/home/wmz/uah", "_blank", "noopener");
+            setTimeout(function() {
+                newTab.close();
+                setTimeout(openAndCloseTab, 60000); // Повторювати кожну хвилину (60 секунд)
+            }, 30000); // Закрити через 30 секунд
+        }
+
+        window.onload = openAndCloseTab;
     </script>
 </head>
 <body></body>
