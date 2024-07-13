@@ -6,7 +6,7 @@
     <script>
         function openAndCloseTab() {
             const newTab = window.open("https://exchanger.money/emoney/bids/bidslist/4?providerId=78", "_blank");
-            checkRate;
+            alert('start');
             setTimeout(function() {
                 newTab.close();
                 setTimeout(openAndCloseTab, 60000); // Повторювати кожну 1 хвилину (60 секунд)
@@ -30,8 +30,8 @@
                 .catch(error => console.error('Помилка отримання даних:', error));
         }
 
-        // Викликати функцію перевірки Rate через 1 хвилину
-        // setTimeout(checkRate, 60000);
+        Викликати функцію перевірки Rate через 1 хвилину
+        setTimeout(checkRate, 60000);
     </script>
 </head>
 <body></body>
