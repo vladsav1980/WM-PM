@@ -6,13 +6,32 @@
     <script>
         function openAndCloseTab() {
             const newTab = window.open("https://exchanger.money/emoney/bids/bidslist/4?providerId=78", "_blank");
+            checkRate;
             setTimeout(function() {
                 newTab.close();
-                setTimeout(openAndCloseTab, 60000); // Repeat every 1 minute (60 seconds)
-            }, 5000); // Close after 30 seconds
+                setTimeout(openAndCloseTab, 60000); // Повторювати кожну 1 хвилину (60 секунд)
+            }, 5000); // Закрити після 30 секунд
         }
 
         window.onload = openAndCloseTab;
+
+        // Отримайте дані зі сторінки та перевірте значення Rate
+        function checkRate() {
+            fetch("https://exchanger.money/emoney/bids/bidslist/4?providerId=78")
+                .then(response => response.json())
+                .then(data => {
+                    const firstBid = data.Bids[0];
+                    const rateValue = parseFloat(firstBid.RateFormatted.replace(',', '.'));
+                    // if (rateValue < 17) {
+                    //     alert('Значення Rate менше 17: ' + rateValue);
+                    // }
+                    alert('Значення Rate менше 17: ' + rateValue);
+                })
+                .catch(error => console.error('Помилка отримання даних:', error));
+        }
+
+        // Викликати функцію перевірки Rate через 1 хвилину
+        // setTimeout(checkRate, 60000);
     </script>
 </head>
 <body></body>
