@@ -6,32 +6,26 @@
     <script>
         function openAndCloseTab() {
             const newTab = window.open("https://exchanger.money/emoney/bids/bidslist/4?providerId=78", "_blank");
-            alert('start');
             setTimeout(function() {
+                const pageText = newTab.document.body.innerText; // Отримати текст сторінки
                 newTab.close();
+                processPageText(pageText); // Обробити отриманий текст
                 setTimeout(openAndCloseTab, 60000); // Повторювати кожну 1 хвилину (60 секунд)
             }, 5000); // Закрити після 30 секунд
         }
 
-        window.onload = openAndCloseTab;
-
-        // Отримайте дані зі сторінки та перевірте значення Rate
-        function checkRate() {
-            fetch("https://exchanger.money/emoney/bids/bidslist/4?providerId=78")
-                .then(response => response.json())
-                .then(data => {
-                    const firstBid = data.Bids[0];
-                    const rateValue = parseFloat(firstBid.RateFormatted.replace(',', '.'));
-                    // if (rateValue < 17) {
-                    //     alert('Значення Rate менше 17: ' + rateValue);
-                    // }
-                    alert('Значення Rate менше 17: ' + rateValue);
-                })
-                .catch(error => console.error('Помилка отримання даних:', error));
+        function processPageText(text) {
+            // Розібрати отриманий текст та перевірити значення Rate
+            const pageData = JSON.parse(text);
+            const firstBid = pageData.Bids[0];
+            const rateValue = parseFloat(firstBid.RateFormatted.replace(',', '.'));
+            // if (rateValue < 17) {
+            //     alert('Значення Rate менше 17: ' + rateValue);
+            // }
+            alert('Значення Rate менше 17: ' + rateValue);
         }
 
-        //Викликати функцію перевірки Rate через 1 хвилину
-        setTimeout(checkRate, 60000);
+        window.onload = openAndCloseTab;
     </script>
 </head>
 <body></body>
